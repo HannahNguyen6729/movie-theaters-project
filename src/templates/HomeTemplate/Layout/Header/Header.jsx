@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Header() {
   return (
-   <header className="px-4 py-1 text-white fixed w-full z-10 text-base" style={{ backgroundColor: 'rgba(0,0,0,0.7'}} >
+   <header className="px-4 py-1 text-white fixed w-full z-10 text-base" style={{ backgroundColor: 'rgba(0,0,0,0.9'}} >
   <div className="container flex justify-between h-16 mx-auto">
     <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 text-yellow-400">

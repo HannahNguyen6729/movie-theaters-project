@@ -1,4 +1,4 @@
-import { GET_COMING_MOVIES, GET_CURRENT_MOVIES, GET_MOVIE_LIST } from "../types/types";
+import { GET_COMING_MOVIES, GET_CURRENT_MOVIES, GET_DETAIL_MOVIE, GET_MOVIE_LIST } from "../types/types";
 
 const defaultState = {
     movieList: [
@@ -20,6 +20,7 @@ const defaultState = {
     movieListDefault: [],
     currentMovie: true,
     comingMovie: false,
+    detailMovie:{},
 }
 export const MovieListReducer = (state = defaultState, action )=>{
     switch(action.type){
@@ -43,6 +44,10 @@ export const MovieListReducer = (state = defaultState, action )=>{
             }
             let newMovieList = state.movieListDefault.filter((item)=> !item.sapChieu)
             return {...state, movieList: newMovieList};
+        }
+        case GET_DETAIL_MOVIE:{
+            state.detailMovie = action.payload;
+            return {...state}
         }
         default:
         return {...state}

@@ -1,5 +1,6 @@
 import React from "react";
 import "./FlipCard.css";
+import { history } from "../../App";
 
 export default function FlipCard(props) {
     const {movie}= props;
@@ -26,7 +27,8 @@ export default function FlipCard(props) {
           <p>We love that guy</p>
         </div>
       </div>
-      <div className="py-2 text-center button"> BOOK TICKET</div>
+      <div  onClick={()=>{history.push(`/detail/${movie.maPhim}`)}}
+            className="py-2 text-center button"> MORE...</div>
     </div>
   );
 }

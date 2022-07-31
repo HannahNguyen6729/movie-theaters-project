@@ -14,7 +14,7 @@ export default function HomeMenu() {
   const [tabPosition, setTabPosition] = useState("left");
   const dispatch = useDispatch();
   const {cinemaList} = useSelector(state=> state.CinemaListReducer);
-  console.log(cinemaList)
+  //console.log(cinemaList)
 
   useEffect(()=>{
     dispatch(getCinemaListAction())
@@ -34,7 +34,7 @@ export default function HomeMenu() {
           > 
             <div>
               {item.danhSachPhim?.slice(0,5).map((item,index)=> (
-                <div className='flex items-center mb-16'>
+                <div className='flex items-center mb-16' key={index}>
                   <img  src={item.hinhAnh} alt={item.tenPhim} className="w-20 mr-3 rounded-md"
                                     style={{width: 100, height: 100}} 
                                     onError={e=> {e.target.src = 'https://picsum.photos/75/75'; e.target.onError = null}}
