@@ -1,0 +1,8 @@
+.slick-next:before, .slick-prev:before{
+    font-size: 30px;
+    color: white;
+}
+.slick-prev:before{
+    padding-right:30px;
+}
+
