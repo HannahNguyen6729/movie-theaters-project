@@ -7,7 +7,7 @@ export default function HomeCard() {
   return (
     <div className="container mx-auto">
         <section className="text-gray-600 body-font">
-            <div className="container px-10 py-24 mx-auto">
+            <div className="container px-10 py-20 mx-auto">
                 <MultipleRowSlick/>
             </div>
         </section>

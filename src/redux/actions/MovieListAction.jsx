@@ -1,6 +1,5 @@
-import Axios from "axios";
+
 import { manageMovieService } from "../../services/ManageMovieService";
-import { DOMAIN } from "../../util/settings/config";
 import { GET_MOVIE_LIST } from "../types/types";
 
 

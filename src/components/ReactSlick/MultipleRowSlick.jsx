@@ -33,9 +33,7 @@ function SamplePrevArrow(props) {
   
 export const MultipleRowSlick=() =>{
     const dispatch= useDispatch();
-    const {movieList,currentMovie,comingMovie} = useSelector(state=> state.MovieListReducer);
-    console.log(currentMovie)
-    console.log('coming',comingMovie)
+    const {movieList,currentMovie,comingMovie} = useSelector(state=> state.MovieListReducer)
     useEffect(()=>{
         dispatch(getMovieListAction(GROUPID))
     },[])

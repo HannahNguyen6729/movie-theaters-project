@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './src/App.js',
+    './src/pages/Home/HomeMenu/HomeMenu.jsx',
     './src/components/ReactSlick/MultipleRowSlick.jsx',
     './src/pages/Home/Home.jsx',
     './src/templates/HomeTemplate/Layout/Header/Header.jsx',
