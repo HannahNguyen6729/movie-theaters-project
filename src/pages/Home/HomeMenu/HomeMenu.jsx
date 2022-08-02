@@ -43,7 +43,7 @@ export default function HomeMenu() {
                       <p className='text-white text-2xl font-semibold mb-2 uppercase'>{item.tenPhim}</p>
                       <div className='grid grid-cols-6 gap-10'>
                               {item.lstLichChieuTheoPhim?.slice(0,6).map((item,index)=>(
-                                <button className='bg-yellow-700 px-3 py-1.5 rounded-sm hover:bg-yellow-500'>
+                                <button key={index} className='bg-yellow-700 px-3 py-1.5 rounded-sm hover:bg-yellow-500'>
                                   <NavLink to='/' key={index} className='text-white hover:text-white'>
                                   {moment(item.ngayChieuGioChieu).format('hh:mm A')}
                                 </NavLink>

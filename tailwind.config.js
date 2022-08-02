@@ -2,6 +2,8 @@
 module.exports = {
   content: [
     './src/App.js',
+    './src/pages/Login/Login.jsx',
+    './src/templates/UserTemplate/UserTemplate.jsx',
     './src/pages/MovieDetail/MovieDetail.jsx',
     './src/pages/Home/HomeMenu/HomeMenu.jsx',
     './src/components/ReactSlick/MultipleRowSlick.jsx',

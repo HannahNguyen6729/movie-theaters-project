@@ -21,14 +21,15 @@ export default function FlipCard(props) {
             style={{ width: 300, height: 300 , opacity: 0}}
           />
         </div>
-        <div className="flip-card-back">
-          <h1>John Doe</h1>
-          <p>Architect &amp; Engineer</p>
-          <p>We love that guy</p>
+        <div className="flip-card-back flex items-center justify-center px-10">
+          <div>
+            <p className="text-lg font-bold">{movie.tenPhim}</p>
+            <a href='#' className="btn__play"><i className="fa fa-play fa-2x"></i></a>
+          </div>
         </div>
       </div>
       <div  onClick={()=>{history.push(`/detail/${movie.maPhim}`)}}
-            className="py-2 text-center button"> MORE...</div>
+            className="py-2 text-center button"> BOOK TICKETS</div>
     </div>
   );
 }

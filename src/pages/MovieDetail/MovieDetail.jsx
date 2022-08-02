@@ -6,6 +6,7 @@ import "./circle.css";
 import { getDetailMovieAction } from "../../redux/actions/DetailMovieAction";
 import { Radio, Space, Tabs } from 'antd';
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
@@ -26,9 +27,11 @@ export default function MovieDetail(props) {
                         <p className="mb-0 text-white font-semibold">{item.tenCumRap}</p>
                         <p className="mb-0 text-white" style={{marginBottom: '15px', marginTop: '5px'}}>{item.diaChi}</p>
                         <p className="mb-0 text-white"> {item.lichChieuPhim.map((item,index)=> (
-                            <span className='bg-yellow-600  px-3 py-1.5 mr-2 rounded-sm 'key={index}>
-                                {moment(item.ngayChieuGioChieu).format('hh:mm A')}
-                            </span>
+                            <NavLink to={`/checkout/${item.maLichChieu}`} key={index} >
+                                <span className='bg-yellow-600  px-3 py-1.5 mr-2 rounded-sm text-white hover:bg-yellow-500'>
+                                    {moment(item.ngayChieuGioChieu).format('hh:mm A')}
+                                </span>
+                            </NavLink>
                         ))} </p>
                     </div>
                 </div>
