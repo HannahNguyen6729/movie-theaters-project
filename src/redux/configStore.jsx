@@ -4,6 +4,7 @@ import { CarouselReducer } from './reducers/CarouselReducer';
 import { CinemaListReducer } from './reducers/CinemaListReducer';
 import { LoginReducer } from './reducers/LoginReducer';
 import { MovieListReducer } from './reducers/MovieListReducer';
+import { SeatListReducer } from './reducers/SeatListReducer';
 
 const rootReducer = combineReducers({
     //state
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     MovieListReducer,
     CinemaListReducer,
     LoginReducer,
+    SeatListReducer,
 })
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk))

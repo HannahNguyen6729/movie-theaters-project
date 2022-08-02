@@ -5,3 +5,5 @@ export const GET_COMING_MOVIES = 'GET_COMING_MOVIES';
 export const GET_CINEMA_LIST = 'GET_CINEMA_LIST';
 export const GET_DETAIL_MOVIE = 'GET_DETAIL_MOVIE';
 export const LOGIN_ACTION = 'LOGIN _ACTION';
+export const GET_SEAT_LIST = 'GET_SEAT_LIST';
+export const BOOKING_SEAT = 'BOOKING_SEAT';

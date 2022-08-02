@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './src/App.js',
+    './src/pages/Checkout/Checkout.jsx',
     './src/pages/Login/Login.jsx',
     './src/templates/UserTemplate/UserTemplate.jsx',
     './src/pages/MovieDetail/MovieDetail.jsx',

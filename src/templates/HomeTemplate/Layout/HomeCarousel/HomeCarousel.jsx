@@ -9,7 +9,7 @@ export default function HomeCarousel() {
   const { carouselArray } = useSelector((state) => state.CarouselReducer);
   const dispatch = useDispatch();
   const contentStyle = {
-    height: "670px",
+    height: "900px",
     color: "#fff",
     lineHeight: "160px",
     textAlign: "center",
