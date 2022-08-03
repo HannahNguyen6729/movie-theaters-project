@@ -133,6 +133,16 @@ export default function Checkout(props) {
                           maLichChieu: props.match.params.id,
                           danhSachVe: bookingSeatList,
                         }
+                        // {
+                        //   "maLichChieu": 46102,
+                        //   "danhSachVe": [
+                        //     {
+                        //       "maGhe": 48201,
+                        //       "giaVe": 75000
+                        //     }
+                        //   ]
+                        // }
+                        console.log('seatInfo',seatInfo)
                 dispatch(bookTicketAction(seatInfo));
               }}
               className="bg-yellow-500 text-white w-full text-center py-3 font-bold text-2xl cursor-pointer"
