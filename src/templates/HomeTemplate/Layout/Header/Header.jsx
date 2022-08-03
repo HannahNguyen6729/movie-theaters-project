@@ -1,8 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../../App'
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
+  const onChange= (e)=>{
+    i18n.changeLanguage(e.target.value)
+  }
   return (
    <header className="px-4 py-1 text-white fixed w-full z-10 text-base" style={{ backgroundColor: 'rgba(0,0,0,0.9'}} >
   <div className="container flex justify-between h-16 mx-auto">
@@ -14,25 +19,31 @@ export default function Header() {
     </NavLink>
     <ul className="items-stretch hidden space-x-3 lg:flex">
       <li className="flex">
-        <NavLink rel="noopener noreferrer" to="/home" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'>Home</NavLink>
+        <NavLink rel="noopener noreferrer" to="/home" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'> {t('home')} </NavLink>
       </li>
       <li className="flex">
-        <NavLink rel="noopener noreferrer" to="/contact" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'>Contact</NavLink>
+        <NavLink rel="noopener noreferrer" to="/contact" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'> {t('contact')} </NavLink>
       </li>
       <li className="flex">
-        <NavLink rel="noopener noreferrer" to="/news" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'>News</NavLink>
+        <NavLink rel="noopener noreferrer" to="/news" className="flex items-center px-4 border-transparent mt-2 text-white hover:text-yellow-400" activeClassName='text-yellow-400'> {t('news')}</NavLink>
       </li>
      
     </ul>
     <div className="items-center flex-shrink-0 hidden lg:flex">
-      <button onClick={()=> history.push('/login')} className="self-center px-5 py-2 mr-2 rounded hover:bg-yellow-400 hover:text-gray-900">Sign in</button>
-      <button className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">Sign up</button>
+      <select onChange={e=> onChange(e)} className='bg-black mr-2 py-1'> 
+        <option value='en'>English</option>
+        <option value="fi">Finnish</option>
+        <option value="vi">Vietnamese</option>
+      </select>
+      <button onClick={()=> history.push('/login')} className="self-center px-5 py-2 mr-2 rounded hover:bg-yellow-400 hover:text-gray-900">{t('sign in')}</button>
+      <button className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">{t('sign up')}</button>
     </div>
     <button className="p-4 lg:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
+    
   </div>
 </header>
 
