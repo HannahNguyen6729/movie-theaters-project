@@ -6,7 +6,7 @@ import "./Checkout.css";
 import { bookTicketAction, getSeatListAction } from "../../redux/actions/SeatListAction";
 import Item from "antd/lib/list/Item";
 import _, { divide } from "lodash";
-import { BOOKING_SEAT } from "../../redux/types/types";
+import { BOOKING_SEAT, CHANGE_TABS } from "../../redux/types/types";
 import { CheckOutlined, CloseOutlined, UserOutlined ,SmileOutlined,HomeOutlined} from '@ant-design/icons'
 import { Tabs } from 'antd';
 import { getAccountInfoAction } from "../../redux/actions/UserInfoAction";
@@ -188,14 +188,17 @@ function BookedTicketHistory(){
 
   )
 }
-const onChange = (key) => {
-  console.log(key);
-};
+
 
 export default function Demo(props){ 
+  const activeKey = useSelector(state => state.SeatListReducer.activeKey)
+  const dispatch = useDispatch();
+  console.log('activekey',activeKey)
   return (
 <div className='bg-neutral-900 py-5 px-10' style={{minHeight: '100vh'}}>
-  <Tabs defaultActiveKey="1" onChange={onChange}>
+  <Tabs defaultActiveKey="1" 
+        activeKey={activeKey.toString()} 
+        onChange={(key)=> dispatch({type: CHANGE_TABS, payload: key})}>
     <TabPane tab="1/ BOOK SEATS" key="1">
       <Checkout {...props}/>
     </TabPane>

@@ -1,7 +1,6 @@
 import Axios from 'axios';
 import { DOMAIN, TOKEN } from '../util/settings/config';
 
-console.log('token',localStorage.getItem(TOKEN))
 export class BaseServices{
     get = (url, model)  => {
         return Axios({
