@@ -2,7 +2,7 @@
 
 import { history } from "../../App";
 import { manageUserService } from "../../services/ManageUserService";
-import { LOGIN_ACTION } from "../types/types";
+import { GET_ACCOUNT_INFO_ACTION,  LOGIN_ACTION } from "../types/types";
 
 
  export const loginAction = (userInfo)=>{
@@ -19,4 +19,18 @@ import { LOGIN_ACTION } from "../types/types";
           console.log(err)
         }
     }
+ }
+ export const getAccountInfoAction = ()=>{
+  return async (dispatch) => {
+    try{
+      const response = await manageUserService.getAccountInfo()
+      
+      //send data to reducer/ redux store
+      if(response.status === 200) {
+        dispatch({ type: GET_ACCOUNT_INFO_ACTION, payload: response.data.content });
+      }
+    }catch(err){
+      console.log(err)
+    }
+}
  }

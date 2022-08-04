@@ -44,7 +44,7 @@ export default function HomeMenu() {
                       <div className='grid grid-cols-6 gap-10'>
                               {item.lstLichChieuTheoPhim?.slice(0,6).map((item,index)=>(
                                 <button key={index} className='bg-yellow-700 px-3 py-1.5 rounded-sm hover:bg-yellow-500'>
-                                  <NavLink to='/' key={index} className='text-white hover:text-white'>
+                                  <NavLink to={`/checkout/${item.maLichChieu}`} key={index} className='text-white hover:text-white'>
                                   {moment(item.ngayChieuGioChieu).format('hh:mm A')}
                                 </NavLink>
                                 </button>

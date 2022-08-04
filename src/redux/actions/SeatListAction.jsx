@@ -25,7 +25,7 @@ import { GET_SEAT_LIST } from "../types/types";
     try{
       console.log('token',localStorage.getItem(TOKEN))
       const response = await manageSeatListService.bookTicket(seatInfo)
-      console.log(response.data.content)
+      //console.log(response.data.content)
     }catch(err){
       console.log(err)
     }

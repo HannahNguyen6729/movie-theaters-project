@@ -10,6 +10,7 @@ import MovieDetail from './pages/MovieDetail/MovieDetail';
 import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate';
 import Checkout from './pages/Checkout/Checkout';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
+import Profile from './pages/Profile/Profile';
 
 export const history = createBrowserHistory();
 
@@ -25,7 +26,8 @@ function App() {
         <CheckoutTemplate exact path='/checkout/:id' Component={Checkout} />
         <UserTemplate exact path='/login' Component={Login} />
         {/* <Route exact path='/login' component={Login} /> */}
-        <Route exact path='/register' component={Register} />
+        <UserTemplate exact path='/register' Component={Register} />
+        <HomeTemplate exact path='/profile' Component={Profile} />
         <HomeTemplate exact path='/' Component={Home} />
       </Switch>
     </Router>

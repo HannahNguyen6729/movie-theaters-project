@@ -1,12 +1,32 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../../App'
 import { useTranslation } from 'react-i18next';
+import { object } from 'yup';
 
 export default function Header() {
+  const userInfo = useSelector(state=> state.LoginReducer.userInfo)
   const { t, i18n } = useTranslation();
   const onChange= (e)=>{
     i18n.changeLanguage(e.target.value)
+  }
+
+  const renderSignInBtn= ()=>{
+    if(Object.keys(userInfo).length === 0){
+      return (
+        <>
+          <button onClick={()=> history.push('/login')} className="self-center px-5 py-2 mr-2 rounded hover:bg-yellow-400 hover:text-gray-900">{t('sign in')}</button>
+          <button onClick={()=> history.push('/register')} 
+              className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">{t('sign up')}</button>
+        </>
+      )
+    }
+    return (
+      <button onClick={()=> history.push('/profile')} 
+              className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">Hello {userInfo.taiKhoan} !
+      </button>
+    )
   }
   return (
    <header className="px-4 py-1 text-white fixed w-full z-10 text-base" style={{ backgroundColor: 'rgba(0,0,0,0.9'}} >
@@ -35,8 +55,7 @@ export default function Header() {
         <option value="fi">Finnish</option>
         <option value="vi">Vietnamese</option>
       </select>
-      <button onClick={()=> history.push('/login')} className="self-center px-5 py-2 mr-2 rounded hover:bg-yellow-400 hover:text-gray-900">{t('sign in')}</button>
-      <button className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">{t('sign up')}</button>
+      {renderSignInBtn()}
     </div>
     <button className="p-4 lg:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">

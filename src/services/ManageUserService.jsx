@@ -7,6 +7,9 @@ export class ManageUserService extends BaseServices{
     login = (userInfo)=>{ //{password,email}
         return this.post('/api/QuanLyNguoiDung/DangNhap', userInfo)
     };
+    getAccountInfo=()=>{
+        return this.post('api/QuanLyNguoiDung/ThongTinTaiKhoan')
+    };
    
 }
 export const manageUserService = new ManageUserService();
