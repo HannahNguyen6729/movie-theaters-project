@@ -8,9 +8,12 @@ import Item from "antd/lib/list/Item";
 import _, { divide } from "lodash";
 import { BOOKING_SEAT, CHANGE_TABS } from "../../redux/types/types";
 import { CheckOutlined, CloseOutlined, UserOutlined ,SmileOutlined,HomeOutlined} from '@ant-design/icons'
-import { Tabs } from 'antd';
+import { Button, Tabs } from 'antd';
 import { getAccountInfoAction } from "../../redux/actions/UserInfoAction";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
+import { history } from "../../App";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 const { TabPane } = Tabs;
 
 function Checkout(props) {
@@ -165,8 +168,11 @@ function BookedTicketHistory(){
               <div className="flex-grow">
                 <h2 className="text-white title-font font-medium"> {item.tenPhim} </h2>
                 <p className="text-white">Length: {item.thoiLuongPhim} minutes</p>
-                <p className="text-white">Ticket Id: {item.maVe} </p>
-                <p className="text-white"> Time: {moment(item.ngayDat).format('hh:mm A')}  /  Date: {moment(item.ngayDat).format('DD.MM.YYYY')} </p>
+                <p className="text-white">Address: {item.danhSachGhe[0].tenHeThongRap} - {item.danhSachGhe[0].tenCumRap}</p>
+                <p className="text-white">Time: {moment(item.ngayDat).format('hh:mm A')}  /  Date: {moment(item.ngayDat).format('DD.MM.YYYY')} </p>
+                <p className="text-white">Seat numbers: {item.danhSachGhe.map((seat,index)=> (
+                  <span className='px-1'> {seat.tenGhe} </span>
+                ))} </p>
               </div>
             </div>
         </div>
@@ -193,17 +199,41 @@ function BookedTicketHistory(){
 export default function Demo(props){ 
   const activeKey = useSelector(state => state.SeatListReducer.activeKey)
   const dispatch = useDispatch();
+  const userInfo = useSelector(state => state.LoginReducer.userInfo)
   console.log('activekey',activeKey)
+  const operations = <Fragment>
+    {userInfo? (
+      <div>
+        <Button onClick={()=> history.push('/profile')}>Hi {userInfo.taiKhoan} !</Button>
+        <Button className='ml-2' onClick= {()=> {
+          localStorage.removeItem(TOKEN);
+          localStorage.removeItem(USER_LOGIN);
+          history.push('/');
+          window.location.reload();
+          }}>Log out</Button>
+        </div>
+      ) : ''}
+  </Fragment>
+  useEffect(()=>{
+    //component unmounts
+    dispatch({type: CHANGE_TABS, payload: 1})
+  },[])
   return (
 <div className='bg-neutral-900 py-5 px-10' style={{minHeight: '100vh'}}>
   <Tabs defaultActiveKey="1" 
         activeKey={activeKey.toString()} 
-        onChange={(key)=> dispatch({type: CHANGE_TABS, payload: key})}>
+        onChange={(key)=> dispatch({type: CHANGE_TABS, payload: key})}
+        tabBarExtraContent={operations}
+  >
     <TabPane tab="1/ BOOK SEATS" key="1">
       <Checkout {...props}/>
     </TabPane>
     <TabPane tab="2/ BOOKED TICKET HISTORY" key="2">
       <BookedTicketHistory {...props}/>
+    </TabPane>
+    <TabPane tab={ <div className="pb-5" onClick={()=> history.push('/')} >
+      <NavLink to='/' className='text-white text-2xl ml-3 hover:text-yellow-400'><HomeOutlined /></NavLink>
+    </div> } key="3">
     </TabPane>
   </Tabs>
 </div>

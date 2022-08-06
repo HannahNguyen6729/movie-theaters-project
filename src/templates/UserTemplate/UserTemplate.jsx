@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 
 export default function UserTemplate(props) {//props: exact, path, Component
     const {Component, ...restProps} = props;
+    useEffect(()=> {window.scrollTo(0,0)})
   return (
     <Route {...restProps} render={(routeProps) => { //routeProps: location, history, match
       return (
