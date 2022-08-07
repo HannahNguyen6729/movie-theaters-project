@@ -11,6 +11,12 @@ import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate';
 import Checkout from './pages/Checkout/Checkout';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
 import Profile from './pages/Profile/Profile';
+import AdminTemplate from './templates/AdminTemplate/AdminTemplate';
+import DashBoard from './pages/Admin/DashBoard/DashBoard';
+import ShowTime from './pages/Admin/ShowTime/ShowTime';
+import Films from './pages/Admin/Films/Films';
+import AddNew from './pages/Admin/Films/AddNew/AddNew';
+import EditFilm from './pages/Admin/Films/EditFilm/EditFilm';
 
 export const history = createBrowserHistory();
 
@@ -28,6 +34,12 @@ function App() {
         {/* <Route exact path='/login' component={Login} /> */}
         <UserTemplate exact path='/register' Component={Register} />
         <HomeTemplate exact path='/profile' Component={Profile} />
+        <AdminTemplate exact path='/admin' Component={DashBoard}/>
+        <AdminTemplate exact path='/admin/films' Component={Films}/>
+        <AdminTemplate exact path='/admin/films/addnew' Component={AddNew}/>
+        <AdminTemplate exact path='/admin/films/editfilm' Component={EditFilm}/>
+        <AdminTemplate exact path='/admin/users' Component={DashBoard}/>
+        <AdminTemplate exact path='/admin/showtimes' Component={ShowTime}/>
         <HomeTemplate exact path='/' Component={Home} />
       </Switch>
     </Router>

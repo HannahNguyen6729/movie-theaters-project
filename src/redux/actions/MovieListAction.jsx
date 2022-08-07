@@ -14,3 +14,14 @@ import { GET_MOVIE_LIST } from "../types/types";
         }
     }
  }
+ export const addMovieUploadImgAction = (formData)=>{
+  return async (dispatch) => {
+    try{
+      const response = await manageMovieService.addMovieUploadImg(formData)
+      console.log(response.data.content)
+      alert('A new movie successfully uploaded!')
+    }catch(err){
+      console.log(err)
+    }
+}
+ }

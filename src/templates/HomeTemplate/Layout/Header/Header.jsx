@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { history } from '../../../../App'
 import { useTranslation } from 'react-i18next';
 import { object } from 'yup';
+import { TOKEN, USER_LOGIN } from '../../../../util/settings/config';
 
 export default function Header() {
   const userInfo = useSelector(state=> state.LoginReducer.userInfo)
@@ -22,10 +23,17 @@ export default function Header() {
         </>
       )
     }
-    return (
+    return (<>
       <button onClick={()=> history.push('/profile')} 
               className="self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white">Hello {userInfo.taiKhoan} !
       </button>
+      <button className='ml-2 self-center px-5 py-2 font-semibold rounded bg-yellow-400 text-gray-900 hover:bg-yellow-600 hover:text-white' onClick= {()=> {
+        localStorage.removeItem(TOKEN);
+        localStorage.removeItem(USER_LOGIN);
+        history.push('/');
+        window.location.reload();
+        }}>Log out</button>
+    </>
     )
   }
   return (
