@@ -15,7 +15,7 @@ import { GROUPID } from '../../../../util/settings/config';
 
 export default function AddNew() {
     const [componentSize, setComponentSize] = useState('default');
-    const [imgSrc, setImgSrc] = useState(null);
+    const [imgSrc, setImgSrc] = useState('');
     const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
@@ -28,6 +28,7 @@ export default function AddNew() {
           hot: false,
           danhGia: 0,
           hinhAnh: {},
+          maNhom: GROUPID,
         },
         onSubmit: values => {
           console.log(values);

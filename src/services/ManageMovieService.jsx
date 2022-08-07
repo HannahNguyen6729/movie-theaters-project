@@ -16,6 +16,9 @@ export class ManageMovieService extends BaseServices{
     addMovieUploadImg = (formData)=>{
         return this.post('/api/QuanLyPhim/ThemPhimUploadHinh', formData);
     }
+    getEditedMovieInfo = (movieId)=>{
+        return this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movieId}`);
+    }
 
 }
 export const manageMovieService = new ManageMovieService();

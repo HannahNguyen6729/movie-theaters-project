@@ -1,6 +1,6 @@
 
 import { manageMovieService } from "../../services/ManageMovieService";
-import { GET_MOVIE_LIST } from "../types/types";
+import { GET_EDITED_MOVIE_INFO, GET_MOVIE_LIST } from "../types/types";
 
 
  export const getMovieListAction = (groupId)=>{
@@ -18,10 +18,26 @@ import { GET_MOVIE_LIST } from "../types/types";
   return async (dispatch) => {
     try{
       const response = await manageMovieService.addMovieUploadImg(formData)
-      console.log(response.data.content)
-      alert('A new movie successfully uploaded!')
+      //console.log(response.data.content)
+      if(response.status === 200){
+        alert('A new movie successfully uploaded!')
+      }
     }catch(err){
       console.log(err)
     }
+  }
 }
+
+ export const getEditedMovieInfoAcion = (movieId)=>{
+  return async (dispatch) => {
+    try{
+      const response = await manageMovieService.getEditedMovieInfo(movieId);
+      //console.log(response.data.content)
+      if(response.status === 200){
+        dispatch({type: GET_EDITED_MOVIE_INFO, payload: response.data.content})
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
  }
